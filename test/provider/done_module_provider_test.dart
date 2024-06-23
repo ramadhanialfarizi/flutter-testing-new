@@ -1,3 +1,5 @@
+// THIS IS FOR UNIT TESTING
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_unit_test_app/provider/done_module_provider.dart';
 
@@ -20,16 +22,24 @@ void main() {
   group(
     "Provider testing",
     () {
+      // var doneModuleProvider = DoneModuleProvider();
+      var testModuleName = 'Test Module';
+      DoneModuleProvider? doneModuleProvider;
+
+      setUp(
+        () {
+          doneModuleProvider = DoneModuleProvider();
+        },
+      );
       test("should contain new item when module complete", () {
         // arrange
-        var doneModuleProvider = DoneModuleProvider();
-        var testModuleName = 'Test Module';
 
         // act
-        doneModuleProvider.complete(testModuleName);
+        doneModuleProvider?.complete(testModuleName);
 
         // assert
-        var result = doneModuleProvider.doneModuleList.contains(testModuleName);
+        var result =
+            doneModuleProvider?.doneModuleList.contains(testModuleName);
         expect(result, true);
       });
 
